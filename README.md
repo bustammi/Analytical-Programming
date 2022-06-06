@@ -19,7 +19,7 @@ _____________________________________
 3. Are two predictor variables sufficient enough to influence an individual's annual income?
 
 
-This MATLAB code provides an overview of the "UCI Machine Learning Repository: Census Income Data Set dataset" through statistical and graphical representation. The lesson gained from this project is to advance the understanding of the MATLAB environment, such as learning how data can be manipulated and represented in several methods. Hence, another purpose of this project is to conduct exploratory data analysis to find solutions through the "Questions Asked" above.
+This MATLAB code provides an overview of the "UCI Machine Learning Repository: Census Income Data Set dataset" through statistical and graphical representation. The lesson gained from this project is to advance the understanding of the MATLAB environment, such as learning how data can be manipulated and represented in several methods. Hence, another purpose of this project is to conduct exploratory data analysis to find solutions for the "Questions Asked" above.
 
 _____________________________________
 
