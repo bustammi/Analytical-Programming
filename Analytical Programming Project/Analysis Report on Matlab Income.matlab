@@ -204,47 +204,58 @@ title('Education for Income <= 50K', 'FontSize', 24)
 lgd = legend('Location','northwest', 'FontSize', 14)
 lgd.Title.String = 'Legend';
 lgd.Title.FontSize = 12;
-
 %Histogram for Hours per Week
-histogram(T.hours_per_week)
+hpw = T.hours_per_week;
+histogram(hpw)
 histfit(T.hours_per_week)
+title('Hours Per Week for US Census Income')
 
-%Histogram for workclass
-cw = categorical(T.workclass)
-histogram(cw)
-histfit(cw)
+
+%Histogram for Work-Class
+wc = categorical(T.workclass);
+summary(wc)
+histogram(wc)
+title('Work-class for US Census Income')
+
+
+%Histogram for Education
+ed = categorical(T.education);
+summary(ed)
+histogram(ed)
+title('Education for US Census Income')
 
 %Histogram for Sex
-cs = categorical(T.sex);
-histogram(cs)
+gen = categorical(T.sex);
+summary(gen)
+histogram(gen)
+title('Gender for US Census Income')
 
-%Numerical Data reporesentation
+%Numerical Data representation
 %statistical measure
 
 %Numeric Representation 1 - Hours Per Week
 %-------------------------------------------------------
-minhpw = min(T.hours_per_week)%Minimum elements of an array
-maxhpw = max(T.hours_per_week)	%Maximum elements of an array
-[Shpw, Lhpw] = bounds(T.hours_per_week)	%Smallest and largest elements
-meanhpw = mean(T.hours_per_week)	%Average or mean value of array
-medianhpw = median(T.hours_per_week)%Median value of array
-modehpw = mode(T.hours_per_week)	%Most frequent values in array
-stdhpw = std(T.hours_per_week)%Standard deviation
+minhpw = min(T.hours_per_week);%Minimum elements of an array
+maxhpw = max(T.hours_per_week)	;%Maximum elements of an array
+[Shpw, Lhpw] = bounds(T.hours_per_week)	;%Smallest and largest elements
+meanhpw = mean(T.hours_per_week)	;%Average or mean value of array
+medianhpw = median(T.hours_per_week);%Median value of array
+modehpw = mode(T.hours_per_week)	;%Most frequent values in array
+stdhpw = std(T.hours_per_week);%Standard deviation
 
-minAI = min(T.actualIncome)%Minimum elements of an array
-maxAI = max(T.actualIncome)	%Maximum elements of an array
-[SAI, LAI] = bounds(T.actualIncome)	%Smallest and largest elements
-meanAI = mean(T.actualIncome)	%Average or mean value of array
-medianAI = median(T.actualIncome)%Median value of array
-modeAI = mode(T.actualIncome)	%Most frequent values in array
-stdAI = std(T.actualIncome)%Standard deviation
+minAI = min(T.actualIncome);%Minimum elements of an array
+maxAI = max(T.actualIncome)	;%Maximum elements of an array
+[SAI, LAI] = bounds(T.actualIncome)	;%Smallest and largest elements
+meanAI = mean(T.actualIncome)	;%Average or mean value of array
+medianAI = median(T.actualIncome);%Median value of array
+modeAI = mode(T.actualIncome)	;%Most frequent values in array
+stdAI = std(T.actualIncome);%Standard deviation
 
-T_hpw = table(minhpw, maxhpw, meanhpw, medianhpw,modehpw,stdhpw)
-T_ai = table(minAI, maxAI, meanAI, medianAI, modeAI, stdAI)
+T_hpw = table(minhpw, maxhpw, meanhpw, medianhpw,modehpw,stdhpw);
+T_ai = table(minAI, maxAI, meanAI, medianAI, modeAI, stdAI);
 
 
-%Numeric Representation 1 - Hours Per Week
+% Basic Statistics for Annual Income Dataset
 %-------------------------------------------------------
 corrcoef(T.hours_per_week, T.actualIncome)	%Correlation coefficients
 cov(T.hours_per_week, T.actualIncome)   %Covariance
-xcorr(T.hours_per_week, T.actualIncome)%Cross-correlation
