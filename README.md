@@ -276,6 +276,7 @@ https://github.com/bustammi/Analytical-Programming/blob/0354bc13f3124dfecb3647ea
   * This histogram shows the frequence of hours worked from individuals in the US. According to the output, it is skewed heavily in the center 
   meaning that most individuals worked approximately 40 hours.
 _____________________________________
+
 ### Histogram for Work-Class
 
 #### Input:
@@ -283,6 +284,36 @@ https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143
 
 #### Output: 
 <img width="650" alt="image" src="https://user-images.githubusercontent.com/67813147/172079205-af38cade-20f6-49fc-b553-345bfb5664c1.png">
+
+     Federal-gov             7 
+     Local-gov               8 
+     Private               106 
+     Self-emp-inc            5 
+     Self-emp-not-inc       12 
+     State-gov               5 
+
+_____________________________________
+
+### Histogram for Education
+
+#### Input:
+https://github.com/bustammi/Analytical-Programming/blob/0354bc13f3124dfecb3647ea342e3bfb141a3f55/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L228-L232
+
+#### Output:
+![Histogram for Education](https://user-images.githubusercontent.com/67813147/172103744-6e2117d9-a456-40ea-b0a8-5b35c9d7498a.jpg)
+
+     11th               7 
+     5th-6th            1 
+     7th-8th            2 
+     9th                5 
+     Assoc-acdm         8 
+     Assoc-voc          8 
+     Bachelors         24 
+     Doctorate          4 
+     HS-grad           42 
+     Masters            8 
+     Prof-school        2 
+     Some-college      32 
 
 _____________________________________
 
@@ -294,6 +325,9 @@ https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143
 #### Output:
 <img width="650" alt="image" src="https://user-images.githubusercontent.com/67813147/172079226-b766235c-092b-4196-917d-7be59b682826.png">
 
+    Female       42 
+    Male        101
+ 
 _____________________________________
 
 ### Statistical Analysis based on the UCI Annual Income Dataset 
@@ -330,6 +364,25 @@ https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143
 * Median for Annual Income  = $36,341 USD
 * Mode for Annual Income  = $10,021 USD
 * Standard Deviation for Annual Income  = $34,024 USD
+
+##### Further Findings 
+
+* Correlation Coefficient for Hours Per Week and Annual Income
+
+``` ans =
+
+    1.0000    0.2110
+    0.2110    1.0000
+```
+
+* Covariance for Hours Pwer Week and Annual Income
+
+``` ans = 
+   1.0e+09 *
+
+    0.0000    0.0001
+    0.0001    1.1729
+```
 
 _____________________________________
 ## 4th Stage: Drawing Conclusion and Inferences
