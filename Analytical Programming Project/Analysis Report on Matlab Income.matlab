@@ -213,8 +213,9 @@ title('Hours Per Week for US Census Income')
 %Histogram for Hours per Week
 hpw = T.hours_per_week;
 histogram(hpw)
-histfit(T.hours_per_week)
+histfit(hpw)
 title('Hours Per Week for US Census Income')
+pd = fitdist(hpw,'Normal') 
 
 
 %Histogram for Work-Class
