@@ -210,6 +210,12 @@ histogram(hpw)
 histfit(T.hours_per_week)
 title('Hours Per Week for US Census Income')
 
+%Histogram for Hours per Week
+hpw = T.hours_per_week;
+histogram(hpw)
+histfit(T.hours_per_week)
+title('Hours Per Week for US Census Income')
+
 
 %Histogram for Work-Class
 wc = categorical(T.workclass);
@@ -228,7 +234,7 @@ title('Education for US Census Income')
 gen = categorical(T.sex);
 summary(gen)
 histogram(gen)
-title('Gender for US Census Income')
+title('Education for US Census Income')
 
 %Numerical Data representation
 %statistical measure
@@ -255,7 +261,7 @@ T_hpw = table(minhpw, maxhpw, meanhpw, medianhpw,modehpw,stdhpw);
 T_ai = table(minAI, maxAI, meanAI, medianAI, modeAI, stdAI);
 
 
-% Basic Statistics for Annual Income Dataset
+% Basic Data Descriptive Statistics
 %-------------------------------------------------------
 corrcoef(T.hours_per_week, T.actualIncome)	%Correlation coefficients
 cov(T.hours_per_week, T.actualIncome)   %Covariance
