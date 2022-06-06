@@ -7,19 +7,19 @@ UCI Machine Learning Repository: Census Income Data Set.**
 ## 1st Stage: Formulating a Question/Problem
 _____________________________________
 
-**Hypothesis:**  What is the effect of the socio-economic factors (i.e., (1) Work-Class; (2) Education, (3) Sex; (4); Hours Per Week) on the annual income that an individual earns at United States? 
+**Hypothesis:**  What is the effect of the socio-economic factors (i.e., (1) Work-Class; (2) Education, (3) Sex; (4); Hours Per Week) on the annual income that an individual earns in the United States? 
 
 **Questions Asked:**
 _____________________________________
 
-1. Are the predictor (independent variables) such as work-class, education, sex, and hours worked per week interdependent?
+1. Are the predictor (independent variables) such as work class, education, sex, and hours worked per week interdependent?
 
-2. How strong is the correlation between the predictor variables and annual income (i.e., dependent variable) of an indiviual at US?
+2. How strong is the correlation between the predictor variables and an individual's annual income (i.e., dependent variable) in the US?
 
-3. Is a single predictor variable sufficient enough in influencing the annual income of an individual?
+3. Are two predictor variables sufficient enough to influence an individual's annual income?
 
 
-The lesson gained from this project is to advance the understanding of the MATLAB environment, such as learning how data can be manipulated and represented in several methods. This MATLAB code provides an overview of the "UCI Machine Learning Repository: Census Income Data Set dataset" through statistical and graphical representation. Hence, another purpose of this project is to extract and manipulate the data to find solutions through the "Questions Asked" above.
+This MATLAB code provides an overview of the "UCI Machine Learning Repository: Census Income Data Set dataset" through statistical and graphical representation. The lesson gained from this project is to advance the understanding of the MATLAB environment, such as learning how data can be manipulated and represented in several methods. Hence, another purpose of this project is to conduct exploratory data analysis to find solutions through the "Questions Asked" above.
 
 _____________________________________
 
@@ -29,9 +29,7 @@ _____________________________________
 
 #### Input: 
 
-``` matlab 
-TC = T(1:3,{'workclass','education','sex','hours_per_week','years','actualIncome'}}
-```
+https://github.com/bustammi/Analytical-Programming/blob/a2e909b69c16e61f8679fdd91a4744243801288c/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L39-L40
 
 * Creates a 3 by 6 table and queries the following column names:
 
@@ -60,7 +58,8 @@ https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143
 
 * Create an additional column for increasing the granularity to "coarse" by generating a discrete array of random integers for the "Years" column through ```matlab T.Var6 = randi([2000 2019],1, 150)';```
 
-**Note:** Increasing the granularity of data to coarse will help the audience understand and analyze data in-depth. In particular, one has easier understanding in how the predictor variables will influence the dependent variable (i.e., annual income). Hence, the benefit of adding a column for "Years" enables the individual (i.e., researcher) to conduct a time-series analysis and observe the complex relationship between multiple variables (e.g., hours worked, years).
+**Note:** Increasing the granularity of data to coarse will help the audience understand and analyze data in-depth. In particular, one can better understand how the predictor variables will influence the dependent variable (i.e., annual income). Hence, adding a column for "Years" enables one to conduct a time-series analysis and observe the complex relationship between multiple variables (e.g., hours worked and years).
+
 
 _____________________________________
 ### Settting the properties for column names 
@@ -116,9 +115,10 @@ https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143
 _____________________________________
 ### Generating Conditional Logic for Plotting Annual Income
 
- * The original dataset does not have a numerical format for representing the annual income and only contains two conditions (i.e., strings), which is an individual in U.S. either earns (">50K") or <=50K".
+* The original dataset does not have a numerical format for representing the annual income. It only contains two conditions (i.e., strings), which is   an individual in the US either earns (">50K") or ("<=50K").
 
-* This type of data formatting will not provide meaningful insights in showing the strength of correlation between the predictor variables and dependent variable (i.e., annual income) due to the lack of granularity in data.
+* This type of data formatting will not provide meaningful insights in showing the strength of correlation between the predictor and dependent
+  variables (i.e., annual income) due to the lack of granularity in data.
 
 * We can modify this issue by creating a logical condition when generating the qq-plot, which is shown in the code below:
 
@@ -140,16 +140,15 @@ _____________________________________
 <img width="1000" alt="image" src="https://user-images.githubusercontent.com/67813147/172075746-97766b10-6c31-419a-ba48-facaf641a112.png">
 
 ##### Findings: 
-* QQ-Plot suffest a weak correlation between annual income and hours worked per week.
+* QQ-Plot suggests a weak correlation between annual income and hours worked per week.
 
-* Higher discrepancy in individuals earning ">50K" suggesting that only few people might worked more than 40 hours in the extracted dataset.
+* Higher discrepancy in individuals earning ">50K," suggesting that only a few people might work more than 40 hours in the extracted dataset.
 
-* Omitted predictors (i.e., work-class, age, education) might have influenced the representation of data in qq-plot.
+* Omitted predictors (i.e., work class, age, education) might have influenced data representation in QQ-plot.
 
-* In the future, expanding the granularity for an individual in each state or city might provide more meaningful insights in analyzing the annual income. 
+* In the future, expanding the granularity for an individual in each state or city might provide more meaningful insights into analyzing the annual income. 
 
-  * It is possible that individuals who resides in New York or California has higher income 
-    due to higher housing prices or living expenses.
+  * It is possible that individuals who reside in New York or California have higher incomes due to higher housing prices or living expenses.
     
 _____________________________________
 ### Generating Pie Charts based on the UCI Annual Income Dataset 
@@ -165,17 +164,17 @@ https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143
 
 ##### Findings:
 
-* Annual Income for Males in US who earned ">50K" and "<50K" were equally distributed.
+* Annual Income for Males in the US who earned ">50K" and "<50K" were equally distributed.
 
-* Annual Income for Females in US who earned ">50K" were 76% and "<50K" were 24%.
+* Annual Income for Females in the US who earned ">50K" was 76%, and "<50K" were 24%.
 
 ##### Notes:
 
-* The nature of extracting or condensing the data to 150 entries might have influenced the results into being less statistically significant.
+* The nature of extracting or condensing the data to 150 entries might have influenced the results to be less statistically significant.
 
-* Majority of the female entries has higher socio-economic status resulting in higher income.
+* Majority of the female entries have higher socio-economic status resulting in higher income.
 
-* Therefore, "gender" as a predictor variable cannot single-handedly determine the annual income of individual since there are multiple predictor variables interdependent to each other.
+* Therefore, "gender" as a predictor variable cannot single-handedly determine the individual's annual income since multiple predictor variables are interdependent.
 
 _____________________________________
 
@@ -190,11 +189,11 @@ https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143
 <img width="650" alt="image" src="https://user-images.githubusercontent.com/67813147/172076920-561383c9-160c-424b-b62d-b29689b7c05b.png">
 
 ##### Findings: 
-* 53% of individuals in US who earns more than $50K (i.e., >$50K) are hired privately (regardless of their gender).
+* 53% of individuals in the US who earns more than $50K (i.e., >$50K) are hired privately (regardless of their gender).
 
-* 70% of individuals who earns less than $50K (<=$50K) are hired privately (regardless of their gender).
+* 70% of individuals who earn less than $50K (<=$50K) are hired privately (regardless of their gender).
 
-* There is higher percentage of individuals in private companies who earns less than ($<50K) because private companies might be  "start-up companies". Hence, the data reflects the "faithfulness" attribute, where most start-up companies pay less to their employees due to lack of funding or investors.
+* There is a higher percentage of individuals in private companies who earns less than ($<50K) because private companies might be  "start-up companies." Most start-up companies pay less to their employees due to a lack of funding or investors. Hence, the data reflects the "faithfulness" attribute.  
 
 _____________________________________
 
@@ -206,42 +205,40 @@ https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143
 
 #### Output: 
 <img width="650" alt="image" src="https://user-images.githubusercontent.com/67813147/172077895-bd755161-524b-4061-b669-82405d613bc5.png">
-
+   
 ##### Findings:
 * For individuals who earned more than $50K (>=50K)
   
-  * 28% of individuals has a Bachelor's Degree
+  * 28% of individuals have a Bachelor's Degree
 
-  * 17% of individuals has a College Diploma
+  * 17% of individuals have a College Diploma
 
-  * 11% of individual has a Master's Degree
+  * 11% of an individual have a Master's Degree
 
 
 * For individuals who earned less than $50K (<$50K)
 
-  * 12% of individuals hold a Bachelor's Degree
+  * 12% of individuals have a Bachelor's Degree
 
-  * 25% of individuals has a College Diploma
+  * 25% of individuals have a College Diploma
 
-  * 4% of individuals has a Master's Degree
+  * 4% of individuals have a Master's Degree
 
 
-* Hence, the results of data are highly "faithful" to today's actual reality of workplace environment.
+* Hence, the data results are highly "faithful" to today's actual reality of the workplace environment.
 
-* The results suggest that an individual's education has a strong and postive correlation with their annual income
+* The results suggest that an individual's education has a strong and positive correlation with their annual income
 
-  * Individuals who earned more than "$50K" have higher percentage of education in
-    Bachelor's and Master's Degree compared to individuals who earned less than "$50K".
+  * Individuals who earned more than "$50K" have a higher percentage of education in Bachelor's and Master's Degree than individuals who earned less     than "$50K".
     
-  *  We can infer that individuals who earn more than $50K holds an occuputation that deals      with higher complexity (e.g., an accountant or Business Analysis might need to deal        with customized software or programming languages, such as Excel, Python, or ERP)
+  *  We can infer that individuals who earn more than $50K hold an occupation that deals with higher complexity (e.g., an accountant or Business          Analysis might need to deal with customized software or programming languages, such as Excel, Python, or ERP)
 
-* It supports the premise that "Education" is a strong predictor variable, but it cannot solely determine the annual income since the analysis only focused on the simple hypothesis. 
+* It supports the premise that "Education" is a vital predictor variable, but it cannot solely determine the annual income since the analysis only     focused on the simple hypothesis. 
 
-   * It does not consider the specific context of multiple predictor variables within each      other. 
+   * It does not consider the specific context of multiple predictor variables within each other. 
 
-   * Does the aggregation of work-class and education provide a more accurate and faithful 
-     result than "education" alone?
-   
+   * Does the aggregation of work-class and education provide a more accurate and faithful result than "education" alone?
+
 _____________________________________
 
 ### Generating Histograms based on the UCI Annual Income Dataset 
@@ -264,17 +261,18 @@ https://github.com/bustammi/Analytical-Programming/blob/0354bc13f3124dfecb3647ea
     sigma = 10.3775   [9.29814, 11.7426]
   ```
   
+
 ##### Findings: 
 
   * Construct a histogram with a normal distribution fit by using ``` histfit(hpw)``` and use ``` fistdit(hpw, Normal)``` to acquire the 
-  parameters used in fitting.
-  
+    parameters used in fitting.
+
   * "mu" = mean; "sigma" = std, of a normal distribution
 
-  * parameters inside the bracket is the 95% confidence interval (i.e.., range of values that an individual can be 95% sure that it includes the true     mean of population.
+  * Parameters inside the bracket are the 95% confidence interval (i.e.., the range of values that an individual can be 95% certain that it includes     the population's true mean.
 
-  * This histogram shows the frequence of hours worked from individuals in the US. According to the output, it is skewed heavily in the center 
-  meaning that most individuals worked approximately 40 hours.
+  * This histogram shows the frequency of hours worked by individuals in the US. According to the output, it is skewed heavily in the center 
+    meaning that most individuals worked approximately 40 hours.
 _____________________________________
 
 ### Histogram for Work-Class
@@ -369,7 +367,9 @@ https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143
 
 * Correlation Coefficient for Hours Per Week and Annual Income
 
-``` ans =
+``` 
+    ans =
+    
 
     1.0000    0.2110
     0.2110    1.0000
@@ -377,12 +377,43 @@ https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143
 
 * Covariance for Hours Pwer Week and Annual Income
 
-``` ans = 
+``` 
+    ans = 
    1.0e+09 *
 
     0.0000    0.0001
     0.0001    1.1729
 ```
 
-_____________________________________
+ _____________________________________
 ## 4th Stage: Drawing Conclusion and Inferences
+
+* The **"correlation coefficient"** is a statistical method that measures the strength of the relationship between the relative movement of two variables, which in our case is the "annual income" and "hours worked per week."
+
+  * According to the statistical analysis performed in UCI Income Dataset, some matrices contain values that are approximately 0.3, meaning that the 
+    correlation between the "predictor" and "dependent" variable is statistically insignificant. 
+    
+  * The relationship between two variables becomes depicted as a "weak (positive) upward sloping linear relationship," as shown in the QQ-     plot       above.
+
+* The **"covariance"** is a statistical method that measures how two variables change together.
+
+  * In the case of the current dataset, most matrices are approximately 0, meaning that the "hours per work" and annual income does not vary             together.
+    
+ 
+ 
+### Recap for Questions Asked:
+_____________________________________
+**1. Are the predictor (independent variables) such as work class, education, sex, and hours worked per week interdependent?**
+
+**Answer:**
+Additional factors need to consider in testing the hypothesis that "work-class, education, sex, and hours worked per week" impacts an individual's annual income. It includes expanding the granularity of data by grouping individuals by each "state" or "city" to provide a specific context in reporting the annual income. These variables are not interdependent, meaning their values or state does not depend on each other and influence any change in values. Hence, the current dataset has limitations in its "granularity" and "faithfulness."  It does not consider socio-economic factors, such as different living and utility expenses in each state/city. 
+
+**2. How strong is the correlation between the predictor variables and an individual's annual income (i.e., dependent variable) in the US?**
+
+**Answer:**
+According to the statistical analysis results, the correlation between "hours per week" and "annual income" is weak and a positive linear relationship since the **"correlation coefficient"** is approximately 0.3. Most predictor variables in this dataset are categorical and qualitative data which leads to difficulty in measuring the strength of the relationship through quantitative measurements. Using quantitative variables such as "age" and "years of experience" might serve as better predictor variables. Its nature enables one to calculate the correlation coefficient easily. 
+
+**3. Are two predictor variables sufficient enough to influence an individual's annual income?**
+
+**Answer:**
+There might be a positive correlation, but it might be relatively weak due to different data types and contexts that become disregarded. For example, individuals who reside in "New York" or "California" might have higher annual income due to the inflation of residential housing or apartment prices and daily living expenses. In contrast, individuals reside in "Mississippi" with lower average housing prices. This situation could result in less "faithful" data, meaning a less accurate depiction of today's environment. Hence, a multi-variate analysis will be needed to conduct and test the hypothesis. Does adding other predictor variables (i.e., age and years of experience) to current predictor variables (i.e., hours_per_week, work-class, education, sex) result in a higher positive correlation to annual income?
