@@ -16,7 +16,7 @@ _____________________________________
 
 2. How strong is the correlation between the predictor variables and annual income (i.e., dependent variable) of an indiviual at US?
 
-3. Is a single predictor variable sufficient enough in influencing the annual income of an individual 
+3. Is a single predictor variable sufficient enough in influencing the annual income of an individual?
 
 
 The lesson gained from this project is to advance the understanding of the MATLAB environment, such as learning how data can be manipulated and represented in several methods. This MATLAB code provides an overview of the "UCI Machine Learning Repository: Census Income Data Set dataset" through statistical and graphical representation. Hence, another purpose of this project is to extract and manipulate the data to find solutions through the "Questions Asked" above.
@@ -249,11 +249,32 @@ _____________________________________
 ### Histogram for Hours Per Week
 
 #### Input: 
-https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L208-L210
+https://github.com/bustammi/Analytical-Programming/blob/0354bc13f3124dfecb3647ea342e3bfb141a3f55/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L213-L218
 
 #### Output:
 <img width="650" alt="image" src="https://user-images.githubusercontent.com/67813147/172079086-e4f8fdb4-7fa6-4de7-a17a-b6a8dbc792e5.png">
 
+  ```
+  pd = 
+
+  NormalDistribution
+
+  Normal distribution
+     mu = 41.2727   [39.5572, 42.9882]
+    sigma = 10.3775   [9.29814, 11.7426]
+  ```
+  
+##### Findings: 
+
+  * Construct a histogram with a normal distribution fit by using ``` histfit(hpw)``` and use ``` fistdit(hpw, Normal)``` to acquire the 
+  parameters used in fitting.
+  
+  * "mu" = mean; "sigma" = std, of a normal distribution
+
+  * parameters inside the bracket is the 95% confidence interval (i.e.., range of values that an individual can be 95% sure that it includes the true     mean of population.
+
+  * This histogram shows the frequence of hours worked from individuals in the US. According to the output, it is skewed heavily in the center 
+  meaning that most individuals worked approximately 40 hours.
 _____________________________________
 ### Histogram for Work-Class
 
@@ -290,7 +311,7 @@ https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143
 
 ##### Findings for Hours Per Worked (hpw) Table:
 
-***Note: rounded to nearest decimal***
+***Note: rounded to the nearest decimal***
 
 * Minimum for hours per worked = 13 hours
 * Maximum for hours per worked = 80 hours
@@ -301,14 +322,14 @@ https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143
 
 ##### Findings for Annual Income (ai) Table:
 
-***Note: rounded to nearest decimal***
+***Note: rounded to the nearest decimal***
 
 * Minimum for Annual Income = $10,021 USD
 * Maximum for Annual Income  = $148,000 USD
-* Average for Annual Income  = $46, 544 USD
-* Median for Annual Income  = $36, 341 USD
-* Mode for Annual Income  = $10, 021 USD
-* Standard Deviation for Annual Income  = $34, 024 USD
+* Average for Annual Income  = $46,544 USD
+* Median for Annual Income  = $36,341 USD
+* Mode for Annual Income  = $10,021 USD
+* Standard Deviation for Annual Income  = $34,024 USD
 
 _____________________________________
 ## 4th Stage: Drawing Conclusion and Inferences
