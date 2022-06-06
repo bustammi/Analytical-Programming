@@ -1,7 +1,7 @@
-# Intro-to-Analytical-Programming
+# Analytical-Programming
 # Census Income Data Analytics Project (EDA) - MATLAB
 
-** The following MATLAB code purpose is to manipulate and extract the data from 
+**The following MATLAB code purpose is to manipulate and extract the data from 
 UCI Machine Learning Repository: Census Income Data Set.**
 
 ## 1st Stage: Formulating a Question/Problem
@@ -10,6 +10,7 @@ _____________________________________
 **Hypothesis:**  What is the effect of the socio-economic factors (i.e., (1) Work-Class; (2) Education, (3) Sex; (4); Hours Per Week) on the annual income that an individual earns at United States? 
 
 **Questions Asked:**
+_____________________________________
 
 1. Are the predictor (independent variables) such as work-class, education, sex, and hours worked per week interdependent?
 
@@ -51,13 +52,7 @@ _____________________________________
 
 #### Input: 
 
-```matlab
-T = readtable('adult.xls');
-T(:,[1,3,5,6,7,8,9,11,12,14]) = [];
-T([151:end],:)=[];
-T.Var6 = randi([2000 2019],1, 150)';
-T.Var7(:,1) = 1:150
-```
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L1-L6
 
 * We can read the annual income dataset by using ```matlab readtable('adult.xls')``` 
 
@@ -72,44 +67,25 @@ _____________________________________
 
 #### Input:
 
-```matlab
-T.Properties.VariableNames{1} = 'workclass';
-T.Properties.VariableNames{2} = 'education';
-T.Properties.VariableNames{3} = 'sex';
-T.Properties.VariableNames{4} = 'hours_per_week';
-T.Properties.VariableNames{5} = 'annualIncome';
-T.Properties.VariableNames{6} = 'years'; %discrete uniform sample of integer
-T.Properties.VariableNames{7} = 'actualIncome';
-```
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L8-L15
 
 
 ### Establishing the data types for all columns
 
 #### Input:
 
-```matlab
-T.workclass = string(T.workclass);
-T.education = string(T.education);
-T.sex = string(T.sex);
-T.hours_per_week = double(T.hours_per_week);
-T.annualIncome = string(T.annualIncome);
-T.years = double(T.years);
-T.actualIncome = double(T.actualIncome);
-```
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L20-L27
 
 ### Removing null values from the dataset
 
 #### Input:
 
-```matlab
-%Removing missing values from data
-T(ismember(T.workclass,'?'),:)=[];
-```
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L17-L18
 
 **Note:** we are using the _ismember_ function that returns a logical datatype. If the condition is true (i.e., workclass has missing rows), then it will be assigned to a value of an empty vector and be removed.
 _____________________________________
 
-## Stage 3: Conducting an Exploratory Data Analysis (EDA) for UCI Annual Income Dataset
+## 3rd Stage: Conducting an Exploratory Data Analysis (EDA) for UCI Annual Income Dataset
 
 **Exploratory Data Analysis (EDA):** According to IBM, EDA is the process of studying and investigating data sets and describe their essential properties by applying data visualisation techinques. It supports in determining how to effectively manipulate the data sources to obtain the answers required, making it simpler for data scientists to uncover patterns, detect anomalies, test hypotheses, and validate assumptions.
 
@@ -121,24 +97,7 @@ _____________________________________
 
 #### Input:
 
-```matlab
-figure('OuterPosition',[20 20 700 800],'Color','w');
-x = T.years;
-y = T.actualIncome;
-z = T.hours_per_week;
-plot(x,y,'linestyle', 'none','color',[0 0.5 0],'marker', 'o')
-xticks(2000:2:2019)
-xticklabels(2000:2:2019)
-yticks(0:10000:150000)
-yticklabels(0:10000:100000)
-ytickformat('usd')
-%Another y axis for overlay
-hold on
-yyaxis right
-plot(x,z,'linestyle','none','color','red','marker','d')
-qqplot(x,z)
-hold off
-```
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L43-L60
 
 * To define the dimension of the QQ-Plot and set the backgorund to white, we can use this ```matlab figure('OuterPosition',[20 20 700 800],'Color','w');``` 
 
@@ -152,22 +111,7 @@ _____________________________________
 ### Formatting for the Quantile-Quantile (QQ) Plot
 
 #### Input:
-
-```matlab 
-title('Plot for Annual Income with Hours Worked vs Years', 'FontSize', 16);
-xlabel('Years');
-yyaxis left;
-ylabel('Annual Income');
-yyaxis right;
-ylabel('Hours Worked');
-ldg = legend('Annual Income', 'Hours Worked', 'Deviation', 'Normal', 'Error');
-leg.NumColumns = 5;
-legend('FontSize',13)
-f = get(gca,'XTickLabel');  
-set(gca,'XTickLabel',f,'fontsize',12,'FontWeight','bold')
-set(gca,'XTickLabelMode','auto')
-set(gca,'linewidth',1.5)
-```
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L62-L75
 
 _____________________________________
 ### Generating Conditional Logic for Plotting Annual Income
@@ -180,15 +124,7 @@ _____________________________________
 
 #### Input:
 
-```matlab
-for i = 1:length(T.annualIncome)
-if strcmp( T.annualIncome(i), '<=50K' );
-         T.actualIncome(i) = randi(39000)+10000;
-     else
-         T.actualIncome(i) = randi(100000)+50000;
-     end
-end
-```
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L30-L37
 
 * Generates a for-loop statement that checks the value listed in ***T.annualIncome*** and sets two conditions:
 
@@ -201,7 +137,7 @@ _____________________________________
 
 #### Output: 
 
-<img width="538" alt="image" src="https://user-images.githubusercontent.com/67813147/172075746-97766b10-6c31-419a-ba48-facaf641a112.png">
+<img width="1000" alt="image" src="https://user-images.githubusercontent.com/67813147/172075746-97766b10-6c31-419a-ba48-facaf641a112.png">
 
 ##### Findings: 
 * QQ-Plot suffest a weak correlation between annual income and hours worked per week.
@@ -221,41 +157,7 @@ _____________________________________
 ### Pie Chart for Gender vs. Annual Income 
 
 #### Input: 
-```matlab
-%Pie for sex, education and workclass
-%set pie for comparison with offsetting (slice) the largest component
-               %those who have more than 50k and less than 50k for all of
-               %them, with labels and legend
- 
-% Pie Chart for Gender vs. Annual Income
-%-------------------------------------------------------
- 
-%Annual Income for Male
-pMALE = (  strcmp( string(T.sex),"Male")  &  (T.actualIncome<50000)  );
- 
-%Annual Income for Female
-pFEMALE = (  strcmp( string(T.sex),"Female")  &  (T.actualIncome<50000)  );
- 
-labels = {'Earned more than 50K', 'Earned less than 50K'};
-
-% Plot 1 - Pie Chart for Male
-%-------------------------------------------------------
-figure('OuterPosition',[20 20 1200 1400],'Color','w');
-
-t = tiledlayout(2,1);
-ax1 = nexttile;
-pf1 = pie(ax1, categorical(pMALE) );
-
-title('Annual Income for Male', 'FontSize',24);
-pText = findobj(pf1,'Type','text');
-
-labelA = ['>50K ' pText(1).String(6:end)];
-labelB = ['<50K ' pText(2).String(6:end)];
-set(findobj(pf1,'type','text'),'fontsize',14)
-pText(1).String = labelA;
-pText(2).String = labelB;
-legend(labels,'Location','northwest','FontSize',14)
-```
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L77-L133
 
 #### Output:
 <img width="650" alt="image" src="https://user-images.githubusercontent.com/67813147/172076805-04303a66-4b32-4471-b0ba-732e962ddb0d.png">
@@ -277,39 +179,13 @@ legend(labels,'Location','northwest','FontSize',14)
 
 _____________________________________
 
-### Pie Chart for Education vs. Annual Income 
+### Pie Chart for Working Class vs. Annual Income 
 
 #### Input: 
-```matlab
-% Plot 3 - Pie Chart for Working Class with income more than 50K
-%-------------------------------------------------------
-figure('OuterPosition',[20 20 1200 1400],'Color','w');
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L135-L174
 
-t = tiledlayout(2,1);
-ax1 = nexttile;
-pf3 = pie(ax1, categorical(workdata), explode);
-title('Workclass for Income >50K','FontSize',24)
-lgd = legend('Location','northwest', 'FontSize', 14)
-lgd.Title.String = 'Legend';
-lgd.Title.FontSize = 12;
-set(findobj(pf3,'type','text'),'fontsize',12.5)
 
-%Plot 4  - Pie Chart for Working Class with income less than 50K
-%-------------------------------------------------------
-ax2 = nexttile;
-explode = {'Private'}
-pf4 = pie(ax2, categorical(workdata2), explode, labels);
-title('Workclass for Income <= 50K', 'FontSize', 24)
-lgd = legend('Location','northwest', 'FontSize', 14)
-lgd.Title.String = 'Legend';
-lgd.Title.FontSize = 12;
-delete(findobj(pf4,'String','Federal-gov'))
-delete(findobj(pf4,'String','Local-gov'))
-delete(findobj(pf4,'String','State-gov'))
-delete(findobj(pf4,'String','Self-emp-inc'))
-delete(findobj(pf4,'String','Self-not-emp-inc'))
-set(findobj(pf4,'type','text'),'fontsize',12.5)
-```
+
 #### Output:
 <img width="650" alt="image" src="https://user-images.githubusercontent.com/67813147/172076920-561383c9-160c-424b-b62d-b29689b7c05b.png">
 
@@ -317,3 +193,122 @@ set(findobj(pf4,'type','text'),'fontsize',12.5)
 * 53% of individuals in US who earns more than $50K (i.e., >$50K) are hired privately (regardless of their gender).
 
 * 70% of individuals who earns less than $50K (<=$50K) are hired privately (regardless of their gender).
+
+* There is higher percentage of individuals in private companies who earns less than ($<50K) because private companies might be  "start-up companies". Hence, the data reflects the "faithfulness" attribute, where most start-up companies pay less to their employees due to lack of funding or investors.
+
+_____________________________________
+
+### Pie Chart for Education vs. Annual Income 
+
+#### Input:
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L178-L206
+
+
+#### Output: 
+<img width="650" alt="image" src="https://user-images.githubusercontent.com/67813147/172077895-bd755161-524b-4061-b669-82405d613bc5.png">
+
+##### Findings:
+* For individuals who earned more than $50K (>=50K)
+  
+  * 28% of individuals has a Bachelor's Degree
+
+  * 17% of individuals has a College Diploma
+
+  * 11% of individual has a Master's Degree
+
+
+* For individuals who earned less than $50K (<$50K)
+
+  * 12% of individuals hold a Bachelor's Degree
+
+  * 25% of individuals has a College Diploma
+
+  * 4% of individuals has a Master's Degree
+
+
+* Hence, the results of data are highly "faithful" to today's actual reality of workplace environment.
+
+* The results suggest that an individual's education has a strong and postive correlation with their annual income
+
+  * Individuals who earned more than "$50K" have higher percentage of education in
+    Bachelor's and Master's Degree compared to individuals who earned less than "$50K".
+    
+  *  We can infer that individuals who earn more than $50K holds an occuputation that deals      with higher complexity (e.g., an accountant or Business Analysis might need to deal        with customized software or programming languages, such as Excel, Python, or ERP)
+
+* It supports the premise that "Education" is a strong predictor variable, but it cannot solely determine the annual income since the analysis only focused on the simple hypothesis. 
+
+   * It does not consider the specific context of multiple predictor variables within each      other. 
+
+   * Does the aggregation of work-class and education provide a more accurate and faithful 
+     result than "education" alone?
+   
+_____________________________________
+
+### Generating Histograms based on the UCI Annual Income Dataset 
+
+### Histogram for Hours Per Week
+
+#### Input: 
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L208-L210
+
+#### Output:
+<img width="650" alt="image" src="https://user-images.githubusercontent.com/67813147/172079086-e4f8fdb4-7fa6-4de7-a17a-b6a8dbc792e5.png">
+
+_____________________________________
+### Histogram for Work-Class
+
+#### Input:
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L212-L215
+
+#### Output: 
+<img width="650" alt="image" src="https://user-images.githubusercontent.com/67813147/172079205-af38cade-20f6-49fc-b553-345bfb5664c1.png">
+
+_____________________________________
+
+### Histogram for Sex
+
+#### Input:
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L217-L219
+
+#### Output:
+<img width="650" alt="image" src="https://user-images.githubusercontent.com/67813147/172079226-b766235c-092b-4196-917d-7be59b682826.png">
+
+_____________________________________
+
+### Statistical Analysis based on the UCI Annual Income Dataset 
+
+#### Input:
+https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L221-L250
+
+#### Output:
+    
+![image](https://user-images.githubusercontent.com/67813147/172079606-a9017c76-3562-460f-98c7-b3977df5a383.png)
+
+
+![image](https://user-images.githubusercontent.com/67813147/172079791-8cc00276-4f73-4144-826b-0baacf948773.png)
+
+
+##### Findings for Hours Per Worked (hpw) Table:
+
+***Note: rounded to nearest decimal***
+
+* Minimum for hours per worked = 13 hours
+* Maximum for hours per worked = 80 hours
+* Average for Hours per worked = 41 hours
+* Median for Hours per worked = 40 hours
+* Mode for Hours per worked = 40 hours
+* Standard Deviation for Hours per worked = 10 hours 
+
+##### Findings for Annual Income (ai) Table:
+
+***Note: rounded to nearest decimal***
+
+* Minimum for Annual Income = $10,021 USD
+* Maximum for Annual Income  = $148,000 USD
+* Average for Annual Income  = $46, 544 USD
+* Median for Annual Income  = $36, 341 USD
+* Mode for Annual Income  = $10, 021 USD
+* Standard Deviation for Annual Income  = $34, 024 USD
+
+_____________________________________
+## 4th Stage: Drawing Conclusion and Inferences
