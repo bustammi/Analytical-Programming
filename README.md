@@ -16,7 +16,7 @@ _____________________________________
 
 2. How strong is the correlation between the predictor variables and an individual's annual income (i.e., dependent variable) in the US?
 
-3. Are two predictor variables sufficient enough to influence an individual's annual income?
+3. Are multiple variables sufficient enough to influence an individual's annual income?
 
 
 This MATLAB code provides an overview of the "UCI Machine Learning Repository: Census Income Data Set dataset" through statistical and graphical representation. The lesson gained from this project is to advance the understanding of the MATLAB environment, such as learning how data can be manipulated and represented in several methods. Hence, another purpose of this project is to conduct exploratory data analysis to find solutions for the "Questions Asked" above.
@@ -98,7 +98,7 @@ _____________________________________
 
 https://github.com/bustammi/Analytical-Programming/blob/65e80c2a6c16a4a9f1187143dc5b214adc1fdb62/Analytical%20Programming%20Project/Analysis%20Report%20on%20Matlab%20Income.matlab#L43-L60
 
-* To define the dimension of the QQ-Plot and set the backgorund to white, we can use this ```matlab figure('OuterPosition',[20 20 700 800],'Color','w');``` 
+* To define the dimension of the QQ-Plot and set the background to white, we can use this ```matlab figure('OuterPosition',[20 20 700 800],'Color','w');``` 
 
 * The "x" variable = years; The "y" variable = annual income; The "z" variable = hours worked
 
@@ -117,8 +117,7 @@ _____________________________________
 
 * The original dataset does not have a numerical format for representing the annual income. It only contains two conditions (i.e., strings), which is   an individual in the US either earns (">50K") or ("<=50K").
 
-* This type of data formatting will not provide meaningful insights in showing the strength of correlation between the predictor and dependent
-  variables (i.e., annual income) due to the lack of granularity in data.
+* Due to the lack of granularity in data, this type of data formatting will not provide meaningful insights in showing the strength of correlation between the predictor and dependent variables (i.e., annual income).
 
 * We can modify this issue by creating a logical condition when generating the qq-plot, which is shown in the code below:
 
@@ -411,9 +410,12 @@ Additional factors need to consider in testing the hypothesis that "work-class, 
 **2. How strong is the correlation between the predictor variables and an individual's annual income (i.e., dependent variable) in the US?**
 
 **Answer:**
-According to the statistical analysis results, the correlation between "hours per week" and "annual income" is weak and a positive linear relationship since the **"correlation coefficient"** is approximately 0.3. Most predictor variables in this dataset are categorical and qualitative data which leads to difficulty in measuring the strength of the relationship through quantitative measurements. Using quantitative variables such as "age" and "years of experience" might serve as better predictor variables. Its nature enables one to calculate the correlation coefficient easily. 
+According to the statistical analysis results, the correlation between "hours per week" and "annual income" is weak and a positive linear relationship since the **"correlation coefficient"** is approximately 0.3. Most predictor variables in this dataset are categorical and qualitative data leading to difficulty in measuring the strength of the relationship through quantitative measurements. Using quantitative variables such as "age" and "years of experience" might serve as better predictor variables. Its nature enables one to calculate the correlation coefficient easily. 
 
 **3. Are two predictor variables sufficient enough to influence an individual's annual income?**
 
 **Answer:**
-There might be a positive correlation, but it might be relatively weak due to different data types and contexts that become disregarded. For example, individuals who reside in "New York" or "California" might have higher annual income due to the inflation of residential housing or apartment prices and daily living expenses. In contrast, individuals reside in "Mississippi" can take advantage of lower average housing prices. This situation could result in less "faithful" data, meaning a less accurate depiction of today's environment. Hence, a multi-variate analysis will be needed to conduct and test the hypothesis. The question that needs to be asked is "does adding other predictor variables (i.e., age and years of experience) to current predictor variables (i.e., hours_per_week, work-class, education, sex) result in a higher positive correlation to annual income" ?
+**Answer:**
+There might be a positive correlation, but it might be relatively weak due to different data types and contexts that become disregarded. For example, individuals who reside in "New York" or "California" might have higher annual income due to the inflation of residential housing or apartment prices and daily living expenses. In contrast, individuals who reside in "Mississippi" can take advantage of lower average housing prices. This situation could result in less "faithful" data, meaning a less accurate depiction of today's environment. Hence, a multi-variate analysis will be needed to conduct and test the Hypothesis. Do adding other predictor variables (i.e., age and years of experience) to current predictor variables result in a higher positive correlation to annual income"?
+
+Nonetheless, the dataset lacks granularity and context in explaining the disparity in income between individuals who lived in different states. This situation means that the dataset does not have a "single source" of truth, so adding a data dictionary for predictor variables might be helpful in the long term. As previously mentioned, another factor to consider is exploring the relationship between multiple predictor variables to annual income. It requires a data type representing the strength of the relationship between various variables, such as "age" and "years of experience," rather than categorical data.
